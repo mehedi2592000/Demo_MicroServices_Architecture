@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zOS5NXUpYiA1lcXS4HRBkew2ltDkttd371aVlptIjlg=",
+  "Source": "api_Account",
+  "BasePath": "_content/api_Account",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
