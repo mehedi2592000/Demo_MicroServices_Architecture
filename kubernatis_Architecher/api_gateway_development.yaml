@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demowebapi-api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demowebapi-gateway
+  template:
+    metadata:
+      labels:
+        app: demowebapi-gateway
+    spec:
+      containers:
+        - name: demowebapi-gateway
+          image: mehedi259/demo_api_gateway
+          env:
+            - name: PRODUCT_SERVICE_URL
+              value: "http://demowebapi-srv-product:5177"

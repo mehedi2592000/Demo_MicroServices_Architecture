@@ -1,3 +1,4 @@
+using api_gateway;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -35,6 +36,15 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+}
+
+var proxyConfig = builder.Configuration.GetSection("ReverseProxy").Get<ReverseProxyConfig>();
+if (proxyConfig?.Clusters != null)
+{
+    foreach (var cluster in proxyConfig.Clusters)
+    {
+        Console.WriteLine($"xxxx Cluster: {cluster.Key}, Destination Address: {string.Join(", ", cluster.Value.Destinations.Select(d => d.Value.Address))}");
+    }
 }
 
 app.UseHttpsRedirection();

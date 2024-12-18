@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demowebapi-api-product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demowebapi-product
+  template:
+    metadata:
+      labels:
+        app: demowebapi-product
+    spec:
+      containers:
+        - name: demowebapi-product
+          image: mehedi259/demo_product_api

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - intellier.com\\project\\YARD_Project\\api_Product\\api_Product.csproj": {}
+    "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Product\\api_Product.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - intellier.com\\project\\YARD_Project\\api_Product\\api_Product.csproj": {
+    "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Product\\api_Product.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\YARD_Project\\api_Product\\api_Product.csproj",
+        "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Product\\api_Product.csproj",
         "projectName": "api_Product",
-        "projectPath": "D:\\OneDrive - intellier.com\\project\\YARD_Project\\api_Product\\api_Product.csproj",
+        "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Product\\api_Product.csproj",
         "packagesPath": "C:\\Users\\1600000343\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - intellier.com\\project\\YARD_Project\\api_Product\\obj\\",
+        "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Product\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
