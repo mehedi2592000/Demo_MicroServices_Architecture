@@ -1,7 +1,9 @@
 using api_gateway;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Yarp.ReverseProxy.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +28,46 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+//builder.Services.AddReverseProxy()
+//    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+
+
+var productServiceUrl = Environment.GetEnvironmentVariable("PRODUCT_SERVICE_URL");
+
+if (string.IsNullOrEmpty(productServiceUrl))
+{
+    throw new InvalidOperationException("Environment variable PRODUCT_SERVICE_URL is not set.");
+}
+
+// Configure routes and clusters dynamically
+var routes = new[]
+{
+    new RouteConfig
+    {
+        RouteId = "ProductRoute",
+        ClusterId = "ProductCluster",
+        Match = new RouteMatch { Path = "/api/Products/{**catch-all}" }
+    }
+};
+
+var clusters = new[]
+{
+    new ClusterConfig
+    {
+        ClusterId = "ProductCluster",
+        Destinations = new Dictionary<string, DestinationConfig>
+        {
+            ["Destination1"] = new DestinationConfig
+            {
+                Address = productServiceUrl
+            }
+        }
+    }
+};
+
+// Load the dynamic configuration into YARP
 builder.Services.AddReverseProxy()
-    .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
+    .LoadFromMemory(routes, clusters);
 
 var app = builder.Build();
 

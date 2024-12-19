@@ -15,3 +15,5 @@ spec:
       containers:
         - name: demowebapi-product
           image: mehedi259/demo_product_api
+          imagePullPolicy: Always
+          

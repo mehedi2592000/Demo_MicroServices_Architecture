@@ -1,0 +1,16 @@
+get services: kubectl get services
+get pods: kubectl get pods
+get namespace: kubectl get namespace
+get development: kubectl get deployment
+get logs: kubectl logs demowebapi-api-gateway-64b56c9474-5882j(run pods)
+reset devlopmet: kubectl rollout restart deployment demowebapi-api-gateway
+get default service: kubectl get svc -n default
+number of replica of single port: kubectl get pods -l app=demowebapi -o wide
+
+
+docker build: docker build -t mehedi259/demo_api_gateway .
+docker push: docker push mehedi259/demo_api_gateway
+development config: kubectl apply -f api_gateway_development.yaml 
+
+https://medium.com/tech-blogs-by-nest-digital/how-to-easily-deploy-an-api-with-net-core-to-kubernetes-on-docker-dd2b5e978d75
+https://andrewlock.net/deploying-asp-net-core-applications-to-kubernetes-part-1-an-introduction-to-kubernetes/

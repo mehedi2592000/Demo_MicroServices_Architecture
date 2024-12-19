@@ -15,6 +15,7 @@ spec:
       containers:
         - name: demowebapi-gateway
           image: mehedi259/demo_api_gateway
+          imagePullPolicy: Always
           env:
             - name: PRODUCT_SERVICE_URL
-              value: "http://demowebapi-srv-product:5177"
+              value: "http://demowebapi-srv-product.default.svc.cluster.local:5177"

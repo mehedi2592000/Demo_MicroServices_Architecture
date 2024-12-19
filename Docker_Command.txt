@@ -1,0 +1,48 @@
+docker image show: docker images
+docker run project : docker build -t basic-app .
+docker run container: docker run --name basic-app-container-v2 -p 44378:5194 basic-app2:v2
+docker compose up: docker compose up
+docker volume automatic update
+
+
+docker create image file : docker-compose build
+docker run container: docker-compose up
+docker all command together : docker-compose up --build
+
+
+http://localhost:5096/WeatherForecast
+
+
+# Use the ASP.NET runtime as the base image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+WORKDIR /app
+EXPOSE 5132
+
+# Set environment variables to define the HTTP binding
+ENV ASPNETCORE_URLS=http://*:5132
+
+# Use the .NET SDK for building the project
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+
+# Copy the project file and restore dependencies
+COPY ["DeckerLearnV3.csproj", "./"]
+RUN dotnet restore "DeckerLearnV3.csproj"
+
+# Copy all source code into the container
+COPY . .
+
+# Build the project
+RUN dotnet build "DeckerLearnV3.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+# Publish the application
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "DeckerLearnV3.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+# Use the runtime image for the final build
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "DeckerLearnV3.dll"]

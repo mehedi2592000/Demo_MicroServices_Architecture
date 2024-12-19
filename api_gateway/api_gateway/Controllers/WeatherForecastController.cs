@@ -12,15 +12,20 @@ namespace api_gateway.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IConfiguration _configuration;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger,IConfiguration config)
         {
             _logger = logger;
+            _configuration = config;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+
+
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -28,6 +33,12 @@ namespace api_gateway.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+        [HttpGet("urldata", Name = "GetUrlData")]
+        public string GetUrl()
+        {
+            var uroldata = _configuration.GetValue<string>("ReverseProxy:Clusters:ProductCluster:Destinations:Destination1:Address");
+            return uroldata;
         }
     }
 }
