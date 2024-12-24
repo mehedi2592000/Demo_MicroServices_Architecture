@@ -14,3 +14,14 @@ development config: kubectl apply -f api_gateway_development.yaml
 
 https://medium.com/tech-blogs-by-nest-digital/how-to-easily-deploy-an-api-with-net-core-to-kubernetes-on-docker-dd2b5e978d75
 https://andrewlock.net/deploying-asp-net-core-applications-to-kubernetes-part-1-an-introduction-to-kubernetes/
+
+
+
+ingress_Nginex COnfigration :
+
+1=> kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+2=> creat the ingress_load_balance.yaml file
+	(http://localhost/api/Products/public)
+
+More Help: 
+https://medium.com/@jaydeepvpatil225/nginx-ingress-with-the-net-core-microservices-and-kubernetes-2e71b089104a
