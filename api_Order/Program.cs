@@ -1,6 +1,13 @@
-using Carter;
+
+using api_Order.Consumer;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+builder.Logging.AddFilter("MassTransit", LogLevel.Debug);
 
 // Add services to the container.
 
@@ -13,7 +20,21 @@ builder.Services.AddSwaggerGen(options =>
     options.InferSecuritySchemes();
 });
 
-builder.Services.AddCarter();
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<ProductCreatedConsumer>();
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("rabbitmq://localhost", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+        cfg.ConfigureEndpoints(context);
+    });
+});
+
+//builder.Services.AddCarter();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,7 +44,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapCarter();
+//app.MapCarter();
 
 app.UseHttpsRedirection();
 

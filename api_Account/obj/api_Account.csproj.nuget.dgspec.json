@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj": {}
+    "D:\\All Project List\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj": {
+    "D:\\All Project List\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
+        "projectUniqueName": "D:\\All Project List\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
         "projectName": "api_Account",
-        "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
-        "packagesPath": "C:\\Users\\1600000343\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Demo_MicroServices_Architecture\\api_Account\\obj\\",
+        "projectPath": "D:\\All Project List\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
+        "packagesPath": "C:\\Users\\mehed\\.nuget\\packages\\",
+        "outputPath": "D:\\All Project List\\Demo_MicroServices_Architecture\\api_Account\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\1600000343\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mehed\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +43,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api_Product.CommonFilter;
+using MassTransit;
 
 namespace api_Product.Controllers
 {
@@ -10,6 +11,15 @@ namespace api_Product.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+
+        private readonly IBus _bus;
+
+
+        public ProductsController(IBus bus)
+        {
+            _bus = bus;
+        }
+
         [Authorize]       
         [HttpGet("getproduct")]
         [RouteBaseActionFilterData]
@@ -37,5 +47,23 @@ namespace api_Product.Controllers
             return Ok("This endpoint is accessible to everyone.");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromBody] Product product)
+        {
+            // Simulate saving product to the database.
+            product.ProductId = Guid.NewGuid();
+
+            // Publish ProductCreatedEvent.
+            await _bus.Publish(new ProductCreatedEvent
+            {
+                ProductId = product.ProductId,
+                ProductName = product.ProductName,
+                Price = product.Price
+            });
+
+            Console.WriteLine("it sworks");
+
+            return Ok(product);
+        }
     }
 }
