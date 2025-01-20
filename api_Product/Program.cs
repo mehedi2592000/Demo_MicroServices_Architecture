@@ -1,7 +1,13 @@
 using api_Product.Consumer;
+using api_Product.OpenTelematry;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using OpenTelemetry;
+using OpenTelemetry.Logs;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -46,6 +52,106 @@ builder.Services.AddMassTransit(x =>
         cfg.ConfigureEndpoints(context);
     });
 });
+
+//builder.Services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+//{
+//    tracerProviderBuilder
+//        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ProductApi"))
+//        .AddAspNetCoreInstrumentation()
+//        .AddEntityFrameworkCoreInstrumentation()
+//        .AddHttpClientInstrumentation()
+//        .AddOtlpExporter(options =>
+//        {
+//            options.Endpoint = new Uri("http://localhost:4317"); // Replace with OTLP endpoint
+//        });
+//});
+
+//builder.Services.AddOpenTelemetry()
+//    .WithTracing(tracerProviderBuilder =>
+//    {
+//        tracerProviderBuilder
+//            .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ProductApi"))
+//            .AddAspNetCoreInstrumentation()
+//            .AddHttpClientInstrumentation()
+//            //.AddSqlClientInstrumentation()
+//            .AddOtlpExporter(options =>
+//            {
+//                options.Endpoint = new Uri("http://localhost:18888"); // OTLP endpoint
+//            });
+//    });
+
+
+//Uri openTelemetryUri = new Uri("http://localhost:18888");
+//var openTelemetryConfig = !string.IsNullOrEmpty(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+//if (openTelemetryConfig)
+//{
+//    openTelemetryUri = new Uri(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+//}
+
+//builder.Services.AddOpenTelemetry()
+//    .ConfigureResource(res => res
+//        .AddService(DiagnosticsConfig.ServiceName))
+//    .WithMetrics(metrics =>
+//    {
+//        metrics
+//            .AddHttpClientInstrumentation()
+//            .AddAspNetCoreInstrumentation();
+//            //.AddRuntimeInstrumentation();
+
+//        metrics.AddMeter(DiagnosticsConfig.Meter.Name);
+
+//        metrics.AddOtlpExporter(opt => opt.Endpoint = openTelemetryUri);
+//    })
+//    .WithTracing(tracing =>
+//    {
+
+//        tracing
+//            .AddAspNetCoreInstrumentation()
+//            .AddHttpClientInstrumentation();
+//            //.AddEntityFrameworkCoreInstrumentation();
+
+//        tracing.AddOtlpExporter(opt => opt.Endpoint = openTelemetryUri);
+
+//    }
+//    );
+
+//builder.Logging.AddOpenTelemetry(log =>
+//{
+//    log.AddOtlpExporter(opt => opt.Endpoint = openTelemetryUri);
+//    log.IncludeScopes = true;
+//    log.IncludeFormattedMessage = true;
+//});
+
+builder.Logging.AddOpenTelemetry(logging =>
+{
+    logging.IncludeFormattedMessage = true;
+    logging.IncludeScopes = true;
+});
+
+builder.Services.AddOpenTelemetry()
+    //.ConfigureResource(resource => resource.AddService("CoffeeShopHasan"))
+    .WithMetrics(metrics =>
+    {
+        metrics.AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation();
+        //metrics.AddRuntimeInstrumentation()
+        //   .AddMeter("Microsoft.AspNetCore.Hosting", "Microsoft.AspNetCore.Server.Kestrel", "System.Net.Http");
+       
+    })
+    .WithTracing(tracing =>
+    {
+        tracing
+           .AddAspNetCoreInstrumentation()
+           .AddHttpClientInstrumentation();       
+           
+    });
+
+var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+if (useOtlpExporter)
+{
+    builder.Services.AddOpenTelemetry().UseOtlpExporter();
+}
+
 
 var app = builder.Build();
 

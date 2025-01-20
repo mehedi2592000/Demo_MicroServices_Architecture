@@ -1,12 +1,11 @@
 {
   "Version": 1,
-  "Hash": "BLajmwSvj1zChZvrrVjm2Kvx6PsKx62ZdotY/A7LTzI=",
+  "Hash": "GERYPWy8PoX5V601bcLshaSjz1AkHsnxBQYoW5xa200=",
   "Source": "api_Product",
   "BasePath": "_content/api_Product",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": []
 }

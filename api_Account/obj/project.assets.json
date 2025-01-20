@@ -761,11 +761,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
+      "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
       "projectName": "api_Account",
-      "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
+      "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_Account\\api_Account.csproj",
       "packagesPath": "C:\\Users\\1600000343\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_Account\\obj\\",
+      "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_Account\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

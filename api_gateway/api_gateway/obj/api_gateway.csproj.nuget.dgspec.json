@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj": {}
+    "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj": {
+    "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj",
+        "projectUniqueName": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj",
         "projectName": "api_gateway",
-        "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj",
+        "projectPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\api_gateway.csproj",
         "packagesPath": "C:\\Users\\1600000343\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main-1\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\obj\\",
+        "outputPath": "D:\\OneDrive - intellier.com\\project\\microservice\\Main\\Demo_MicroServices_Architecture\\api_gateway\\api_gateway\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
